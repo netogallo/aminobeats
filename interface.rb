@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Sat May 11 15:07:09 2013
+** Created: Sat May 11 20:44:45 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -22,9 +22,11 @@ class Ui_MainWindow
     attr_reader :horizontalSpacer_2
     attr_reader :loadMappings
     attr_reader :verticalLayout
+    attr_reader :plot
     attr_reader :sequenceEdit
     attr_reader :horizontalLayout_3
     attr_reader :horizontalSpacer
+    attr_reader :plotButton
     attr_reader :playButton
     attr_reader :stopButton
     attr_reader :verticalSpacer
@@ -48,7 +50,6 @@ class Ui_MainWindow
     @logo = Qt::Label.new(@centralwidget)
     @logo.objectName = "logo"
     @logo.maximumSize = Qt::Size.new(250, 100)
-    @logo.pixmap = Qt::Pixmap.new(":/proteins/220px-Myoglobin.png")
 
     @horizontalLayout_2.addWidget(@logo)
 
@@ -93,6 +94,12 @@ class Ui_MainWindow
 
     @verticalLayout = Qt::VBoxLayout.new()
     @verticalLayout.objectName = "verticalLayout"
+    @plot = Qt::Label.new(@centralwidget)
+    @plot.objectName = "plot"
+    @plot.minimumSize = Qt::Size.new(0, 200)
+
+    @verticalLayout.addWidget(@plot)
+
     @sequenceEdit = Qt::TextEdit.new(@centralwidget)
     @sequenceEdit.objectName = "sequenceEdit"
 
@@ -103,6 +110,11 @@ class Ui_MainWindow
     @horizontalSpacer = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
 
     @horizontalLayout_3.addItem(@horizontalSpacer)
+
+    @plotButton = Qt::PushButton.new(@centralwidget)
+    @plotButton.objectName = "plotButton"
+
+    @horizontalLayout_3.addWidget(@plotButton)
 
     @playButton = Qt::PushButton.new(@centralwidget)
     @playButton.objectName = "playButton"
@@ -153,6 +165,8 @@ class Ui_MainWindow
     @logo.text = ''
     @label_2.text = Qt::Application.translate("MainWindow", "Aminobeats", nil, Qt::Application::UnicodeUTF8)
     @loadMappings.text = Qt::Application.translate("MainWindow", "Load Mappings", nil, Qt::Application::UnicodeUTF8)
+    @plot.text = ''
+    @plotButton.text = Qt::Application.translate("MainWindow", "Plot", nil, Qt::Application::UnicodeUTF8)
     @playButton.text = Qt::Application.translate("MainWindow", "Play", nil, Qt::Application::UnicodeUTF8)
     @stopButton.text = Qt::Application.translate("MainWindow", "Stop", nil, Qt::Application::UnicodeUTF8)
     @menuHelp.title = Qt::Application.translate("MainWindow", "Help", nil, Qt::Application::UnicodeUTF8)

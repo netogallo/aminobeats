@@ -82,6 +82,19 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QLabel" name="plot">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QTextEdit" name="sequenceEdit"/>
       </item>
       <item>
@@ -98,6 +111,13 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="plotButton">
+          <property name="text">
+           <string>Plot</string>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="playButton">
