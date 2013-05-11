@@ -27,15 +27,27 @@ class Aminobeats < Qt::MainWindow
   end
 
   def updateMappings
-    @editMappings.yield @control.mappings.toPlainText
+    begin
+      @editMappings.yield @control.mappings.toPlainText
+    rescue => e
+      printf "Error parsing mappings\n"
+    end
   end
 
   def stopMusic
-    @stopSequence.yield
+    begin
+      @stopSequence.yield
+    rescue => e
+      printf "Error stopping playback\n"
+    end
   end
 
   def playMusic
-    @playSequence.yield @control.sequenceEdit.toPlainText
+    begin
+      @playSequence.yield @control.sequenceEdit.toPlainText
+    rescue => e
+      printf "Error starting playback\n"
+    end
   end
 
 end
