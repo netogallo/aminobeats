@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
@@ -71,6 +74,30 @@
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
              <widget class="QTextEdit" name="sequenceEdit"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="aminosList">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">#aminosList{
+	background-color: #FFFFFF;
+}</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::RichText</enum>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_3">

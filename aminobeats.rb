@@ -32,6 +32,8 @@ class Aminobeats < Qt::MainWindow
     "*" => [0,"",:black]
   }
 
+  @@keyMap = {}
+
   def initialize(editMappings,playSequence,stopSequence,countHP,parseData)
     super()
     @control = Ui_MainWindow.new
@@ -52,7 +54,7 @@ class Aminobeats < Qt::MainWindow
     end      
     @parseData = parseData
     self.loadMappings
-    self.updateMappings
+    self.updateMappings(nil,nil)
     self.createNotesMap
   end
 
@@ -66,9 +68,11 @@ class Aminobeats < Qt::MainWindow
       sel.value = v[0]
       sel.maximum = 128
       sel.connect(SIGNAL "valueChanged(int)"){|note|
-        @@aminosMap[k] = note
-        self.updateMappings
-      }
+        prev = @@aminosMap[k]
+        prev[0] = note
+        @@aminosMap[k] = prev
+        self.updateMappings(note,k)
+      }      
       layout.addWidget name
       layout.addWidget sel
       @control.notesLayout.addLayout layout
@@ -84,18 +88,25 @@ class Aminobeats < Qt::MainWindow
   end
 
   def collectHP arr
-    cutoff = @control.separator.value
+    #cutoff = @control.separator.value
     a = []
     case @control.divisionCombo.currentIndex
     when 0
-      a = arr.find_all {|x| x > cutoff}
+      a = arr.find_all {|x| @@keyMap[x][2] == :red} # > cutoff}
     when 1
-      a = arr.find_all {|x| x < cutoff}
+      a = arr.find_all {|x| @@keyMap[x][2] == :green} #x < cutoff}
     end
     a
   end
 
-  def updateMappings
+  def updateMappings(k,n)
+    if k
+      @@keyMap[n] = @@aminosMap[k]
+    else
+      @@aminosMap.each{|k,v|
+        @@keyMap[v[0]] = v
+      }
+    end
     begin
       @editMappings.yield(@codes,@@aminosMap)
     rescue => e
@@ -209,9 +220,28 @@ class Aminobeats < Qt::MainWindow
     @control.plot.setPixmap Qt::Pixmap.new @@plotfile
   end
 
+  def updateList(ts)
+    @control.aminosList.setTextFormat(Qt::RichText)
+    @control.aminosList.text = ""
+    ts.each{|t|
+      if @@keyMap[t]
+        tx = @control.aminosList.text == nil ? "" : @control.aminosList.text
+        style = Proc.new {|x| tx}
+        case @@keyMap[t][2]
+        when :red
+          style = Proc.new {|x| tx + '<span style="color:#FF0000">' + x + ' </span>'}
+        when :green
+          style = Proc.new {|x| tx + '<span style="color:#00FF00">' + x + ' </span>'}
+        end
+        @control.aminosList.text = (style.yield @@keyMap[t][1])
+      end
+    }
+  end
+
   def playMusic
     begin
-      @playSequence.yield @control.sequenceEdit.toPlainText      
+      t = @playSequence.yield @control.sequenceEdit.toPlainText
+      self.updateList t
     rescue => e
       puts e
       printf "Error starting playback\n"

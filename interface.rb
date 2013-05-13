@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Mon May 13 11:48:47 2013
+** Created: Mon May 13 14:20:05 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -22,6 +22,7 @@ class Ui_MainWindow
     attr_reader :horizontalLayout
     attr_reader :verticalLayout
     attr_reader :sequenceEdit
+    attr_reader :aminosList
     attr_reader :horizontalLayout_3
     attr_reader :horizontalSpacer
     attr_reader :divisionCombo
@@ -44,6 +45,7 @@ class Ui_MainWindow
         mainWindow.objectName = "mainWindow"
     end
     mainWindow.resize(800, 921)
+    mainWindow.styleSheet = ""
     @aboutButton = Qt::Action.new(mainWindow)
     @aboutButton.objectName = "aboutButton"
     @centralwidget = Qt::Widget.new(mainWindow)
@@ -91,6 +93,17 @@ class Ui_MainWindow
     @sequenceEdit.objectName = "sequenceEdit"
 
     @verticalLayout.addWidget(@sequenceEdit)
+
+    @aminosList = Qt::Label.new(@centralwidget)
+    @aminosList.objectName = "aminosList"
+    @aminosList.minimumSize = Qt::Size.new(0, 40)
+    @aminosList.styleSheet = "#aminosList{\n" \
+"	background-color: #FFFFFF;\n" \
+"}"
+    @aminosList.textFormat = Qt::RichText
+    @aminosList.wordWrap = true
+
+    @verticalLayout.addWidget(@aminosList)
 
     @horizontalLayout_3 = Qt::HBoxLayout.new()
     @horizontalLayout_3.objectName = "horizontalLayout_3"
@@ -199,6 +212,7 @@ class Ui_MainWindow
     @logo.text = ''
     @label_2.text = Qt::Application.translate("MainWindow", "Aminobeats", nil, Qt::Application::UnicodeUTF8)
     @plot.text = ''
+    @aminosList.text = ''
     @divisionCombo.insertItems(0, [Qt::Application.translate("MainWindow", "Greater", nil, Qt::Application::UnicodeUTF8),
         Qt::Application.translate("MainWindow", "Smaller", nil, Qt::Application::UnicodeUTF8)])
     @plotButton.text = Qt::Application.translate("MainWindow", "Plot Series", nil, Qt::Application::UnicodeUTF8)

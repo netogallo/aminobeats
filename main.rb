@@ -21,8 +21,9 @@ end
 #the sequence
 
 playSequence = Proc.new do |seq|
-  player.createDataArray(seq)
+  t = player.createDataArray(seq)
   player.createSequence()
+  t
 end
 
 #Finally we require a function to be called when the
