@@ -15,7 +15,6 @@ class AminoPlayer
       else
         tone = 0
       end
-      puts @translation
       @translation[key] = tone
     end
   end
