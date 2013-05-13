@@ -6,15 +6,40 @@ class Aminobeats < Qt::MainWindow
 
   @@plotfile = "./plot.png"
 
-  def initialize(editMappings,playSequence,stopSequence,countHP)
+  @@aminos = "./mapping.map"
+
+  @@aminosMap = {
+    "Val" => [47,"V",:red],
+    "Ile" => [72,"I",:red],
+    "Leu" => [74,"L",:red],
+    "Met" => [76,"M",:red],
+    "Phe" => [77,"F",:red],
+    "Trp" => [79,"W",:red],
+    "Cys" => [81,"C",:red],
+    "Ala" => [47,"A",:green],
+    "Tyr" => [49,"Y",:green],
+    "His" => [51,"H",:green],
+    "Thr" => [53,"T",:green],
+    "Ser" => [54,"S",:green],
+    "Pro" => [56,"P",:green],
+    "Gly" => [58,"G",:green],
+    "Arg" => [59,"R",:green],
+    "Lys" => [61,"K",:green],
+    "Gln" => [63,"Q",:green],
+    "Glu" => [65,"E",:green],
+    "Asn" => [66,"N",:green],
+    "Asp" => [68,"D",:green],
+    "*" => [0,"",:black]
+  }
+
+  def initialize(editMappings,playSequence,stopSequence,countHP,parseData)
     super()
     @control = Ui_MainWindow.new
     @control.setupUi(self)
-    @control.loadMappings.connect(SIGNAL :clicked){self.chooseFile}
     @control.playButton.connect(SIGNAL :clicked){self.playMusic}
     @control.stopButton.connect(SIGNAL :clicked){self.stopMusic}
-    @control.mappings.connect(SIGNAL :textChanged){self.updateMappings}
     @control.plotButton.connect(SIGNAL :clicked){self.plotAmionacids}
+    @control.plotDistributionButton.connect(SIGNAL :clicked){self.plotHistogram}
     @picker = Qt::FileDialog.new
     @editMappings = editMappings
     @playSequence = playSequence
@@ -22,20 +47,59 @@ class Aminobeats < Qt::MainWindow
     @logo = Qt::Pixmap.new "logo.png"
     @control.logo.setPixmap(@logo)
     @len = 10
-    @countHP = countHP
+    @countHP = Proc.new do |x|
+      self.collectHP(x).size
+    end      
+    @parseData = parseData
+    self.loadMappings
+    self.updateMappings
+    self.createNotesMap
   end
 
-  def chooseFile
-    File.open(@picker.getOpenFileName){|file|
-      @control.mappings.setPlainText(file.read)
-    }    
+  def createNotesMap
+
+    @@aminosMap.each{|k,v|
+      layout = Qt::HBoxLayout.new(@control.centralwidget)
+      name = Qt::Label.new
+      name.text = Qt::Application.translate("MainWindow", k, nil, Qt::Application::UnicodeUTF8)
+      sel = Qt::SpinBox.new(@control.centralwidget)
+      sel.value = v[0]
+      sel.maximum = 128
+      sel.connect(SIGNAL "valueChanged(int)"){|note|
+        @@aminosMap[k] = note
+        self.updateMappings
+      }
+      layout.addWidget name
+      layout.addWidget sel
+      @control.notesLayout.addLayout layout
+    }
     
+  end
+
+  def loadMappings 
+
+    File.open(@@aminos){|file|
+      @codes = file.read
+    }
+  end
+
+  def collectHP arr
+    cutoff = @control.separator.value
+    a = []
+    case @control.divisionCombo.currentIndex
+    when 0
+      a = arr.find_all {|x| x > cutoff}
+    when 1
+      a = arr.find_all {|x| x < cutoff}
+    end
+    a
   end
 
   def updateMappings
     begin
-      @editMappings.yield @control.mappings.toPlainText
+      @editMappings.yield(@codes,@@aminosMap)
     rescue => e
+      puts e
       printf "Error parsing mappings\n"
     end
   end
@@ -55,9 +119,11 @@ class Aminobeats < Qt::MainWindow
     ys = []
     acc = []
 
-    t = @control.sequenceEdit.toPlainText()
+    t = @parseData.yield(@control.sequenceEdit.toPlainText)
 
-    t.split("").each do |x|
+    @len = @control.steps.value
+
+    t.each do |x|
       acc << x
       if acc.size > @len
         acc.delete_at 0
@@ -99,25 +165,69 @@ class Aminobeats < Qt::MainWindow
     @control.plot.setPixmap Qt::Pixmap.new @@plotfile
   end
 
+  def plotHistogram
+    
+    w = @control.plot.width
+    h = @control.plot.height
+
+    Gnuplot.open do |gp|
+      Gnuplot::Plot.new( gp ) do |plot|
+    
+        x,y = makeDatapoints
+        
+        ys = {}
+        y.each do |y|
+          if ys[y] 
+            ys[y] = ys[y] + 1
+          else
+            ys[y] = 0
+          end
+        end
+        
+        res = ys.sort_by do |k,v|
+          k
+        end
+        
+        xs = res.each do |a|
+          a[0]
+        end
+
+        vs = res.each do |a|
+          a[1]
+        end
+
+        plot.terminal "png size #{w},#{h}"
+        plot.output @@plotfile #File.expand_path(@@plotfile, __FILE__)
+
+        plot.data << Gnuplot::DataSet.new( [xs,vs] ) do |ds|
+          ds.with = "linespoints"
+          ds.notitle
+        end
+      end
+    end
+
+    @control.plot.setPixmap Qt::Pixmap.new @@plotfile
+  end
+
   def playMusic
     begin
-      @playSequence.yield @control.sequenceEdit.toPlainText
+      @playSequence.yield @control.sequenceEdit.toPlainText      
     rescue => e
+      puts e
       printf "Error starting playback\n"
     end
   end
 
 end
 
-def initApp(editMappings,playSequence,stopSequence)
+def initApp(editMappings,playSequence,stopSequence,parseData)
 
   countHP = Proc.new do |arr|
-    a = arr.find_all {|x| x == '1'}
-    a.size
+    
   end
 
   app = Qt::Application.new ARGV
-  win = Aminobeats.new(editMappings,playSequence,stopSequence,countHP)
+  win = Aminobeats.new(editMappings,playSequence,stopSequence,countHP,parseData)
   win.show
   app.exec
 end

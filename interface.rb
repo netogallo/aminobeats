@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Sat May 11 20:44:45 2013
+** Created: Mon May 13 11:48:47 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -12,23 +12,28 @@ require 'Qt4'
 class Ui_MainWindow
     attr_reader :aboutButton
     attr_reader :centralwidget
-    attr_reader :verticalLayout_3
+    attr_reader :verticalLayout_4
     attr_reader :horizontalLayout_2
     attr_reader :logo
     attr_reader :label_2
-    attr_reader :verticalLayout_2
-    attr_reader :mappings
-    attr_reader :horizontalLayout
-    attr_reader :horizontalSpacer_2
-    attr_reader :loadMappings
-    attr_reader :verticalLayout
     attr_reader :plot
+    attr_reader :horizontalLayout_4
+    attr_reader :verticalLayout_2
+    attr_reader :horizontalLayout
+    attr_reader :verticalLayout
     attr_reader :sequenceEdit
     attr_reader :horizontalLayout_3
     attr_reader :horizontalSpacer
+    attr_reader :divisionCombo
+    attr_reader :separator
+    attr_reader :steps
     attr_reader :plotButton
+    attr_reader :plotDistributionButton
     attr_reader :playButton
     attr_reader :stopButton
+    attr_reader :notes
+    attr_reader :verticalLayout_3
+    attr_reader :notesLayout
     attr_reader :verticalSpacer
     attr_reader :menubar
     attr_reader :menuHelp
@@ -38,13 +43,13 @@ class Ui_MainWindow
     if mainWindow.objectName.nil?
         mainWindow.objectName = "mainWindow"
     end
-    mainWindow.resize(800, 733)
+    mainWindow.resize(800, 921)
     @aboutButton = Qt::Action.new(mainWindow)
     @aboutButton.objectName = "aboutButton"
     @centralwidget = Qt::Widget.new(mainWindow)
     @centralwidget.objectName = "centralwidget"
-    @verticalLayout_3 = Qt::VBoxLayout.new(@centralwidget)
-    @verticalLayout_3.objectName = "verticalLayout_3"
+    @verticalLayout_4 = Qt::VBoxLayout.new(@centralwidget)
+    @verticalLayout_4.objectName = "verticalLayout_4"
     @horizontalLayout_2 = Qt::HBoxLayout.new()
     @horizontalLayout_2.objectName = "horizontalLayout_2"
     @logo = Qt::Label.new(@centralwidget)
@@ -66,40 +71,22 @@ class Ui_MainWindow
     @horizontalLayout_2.addWidget(@label_2)
 
 
-    @verticalLayout_3.addLayout(@horizontalLayout_2)
+    @verticalLayout_4.addLayout(@horizontalLayout_2)
 
-    @verticalLayout_2 = Qt::VBoxLayout.new()
-    @verticalLayout_2.objectName = "verticalLayout_2"
-    @mappings = Qt::TextEdit.new(@centralwidget)
-    @mappings.objectName = "mappings"
-
-    @verticalLayout_2.addWidget(@mappings)
-
-    @horizontalLayout = Qt::HBoxLayout.new()
-    @horizontalLayout.objectName = "horizontalLayout"
-    @horizontalSpacer_2 = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
-
-    @horizontalLayout.addItem(@horizontalSpacer_2)
-
-    @loadMappings = Qt::PushButton.new(@centralwidget)
-    @loadMappings.objectName = "loadMappings"
-
-    @horizontalLayout.addWidget(@loadMappings)
-
-
-    @verticalLayout_2.addLayout(@horizontalLayout)
-
-
-    @verticalLayout_3.addLayout(@verticalLayout_2)
-
-    @verticalLayout = Qt::VBoxLayout.new()
-    @verticalLayout.objectName = "verticalLayout"
     @plot = Qt::Label.new(@centralwidget)
     @plot.objectName = "plot"
     @plot.minimumSize = Qt::Size.new(0, 200)
 
-    @verticalLayout.addWidget(@plot)
+    @verticalLayout_4.addWidget(@plot)
 
+    @horizontalLayout_4 = Qt::HBoxLayout.new()
+    @horizontalLayout_4.objectName = "horizontalLayout_4"
+    @verticalLayout_2 = Qt::VBoxLayout.new()
+    @verticalLayout_2.objectName = "verticalLayout_2"
+    @horizontalLayout = Qt::HBoxLayout.new()
+    @horizontalLayout.objectName = "horizontalLayout"
+    @verticalLayout = Qt::VBoxLayout.new()
+    @verticalLayout.objectName = "verticalLayout"
     @sequenceEdit = Qt::TextEdit.new(@centralwidget)
     @sequenceEdit.objectName = "sequenceEdit"
 
@@ -111,10 +98,34 @@ class Ui_MainWindow
 
     @horizontalLayout_3.addItem(@horizontalSpacer)
 
+    @divisionCombo = Qt::ComboBox.new(@centralwidget)
+    @divisionCombo.objectName = "divisionCombo"
+
+    @horizontalLayout_3.addWidget(@divisionCombo)
+
+    @separator = Qt::SpinBox.new(@centralwidget)
+    @separator.objectName = "separator"
+    @separator.value = 60
+
+    @horizontalLayout_3.addWidget(@separator)
+
+    @steps = Qt::SpinBox.new(@centralwidget)
+    @steps.objectName = "steps"
+    @steps.minimum = 1
+    @steps.maximum = 100
+    @steps.value = 10
+
+    @horizontalLayout_3.addWidget(@steps)
+
     @plotButton = Qt::PushButton.new(@centralwidget)
     @plotButton.objectName = "plotButton"
 
     @horizontalLayout_3.addWidget(@plotButton)
+
+    @plotDistributionButton = Qt::PushButton.new(@centralwidget)
+    @plotDistributionButton.objectName = "plotDistributionButton"
+
+    @horizontalLayout_3.addWidget(@plotDistributionButton)
 
     @playButton = Qt::PushButton.new(@centralwidget)
     @playButton.objectName = "playButton"
@@ -130,16 +141,39 @@ class Ui_MainWindow
     @verticalLayout.addLayout(@horizontalLayout_3)
 
 
-    @verticalLayout_3.addLayout(@verticalLayout)
+    @horizontalLayout.addLayout(@verticalLayout)
+
+
+    @verticalLayout_2.addLayout(@horizontalLayout)
+
+
+    @horizontalLayout_4.addLayout(@verticalLayout_2)
+
+    @notes = Qt::Frame.new(@centralwidget)
+    @notes.objectName = "notes"
+    @notes.frameShape = Qt::Frame::StyledPanel
+    @notes.frameShadow = Qt::Frame::Raised
+    @verticalLayout_3 = Qt::VBoxLayout.new(@notes)
+    @verticalLayout_3.objectName = "verticalLayout_3"
+    @notesLayout = Qt::VBoxLayout.new()
+    @notesLayout.objectName = "notesLayout"
+
+    @verticalLayout_3.addLayout(@notesLayout)
+
+
+    @horizontalLayout_4.addWidget(@notes)
+
+
+    @verticalLayout_4.addLayout(@horizontalLayout_4)
 
     @verticalSpacer = Qt::SpacerItem.new(20, 115, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
 
-    @verticalLayout_3.addItem(@verticalSpacer)
+    @verticalLayout_4.addItem(@verticalSpacer)
 
     mainWindow.centralWidget = @centralwidget
     @menubar = Qt::MenuBar.new(mainWindow)
     @menubar.objectName = "menubar"
-    @menubar.geometry = Qt::Rect.new(0, 0, 800, 22)
+    @menubar.geometry = Qt::Rect.new(0, 0, 800, 21)
     @menuHelp = Qt::Menu.new(@menubar)
     @menuHelp.objectName = "menuHelp"
     mainWindow.setMenuBar(@menubar)
@@ -164,9 +198,11 @@ class Ui_MainWindow
     @aboutButton.text = Qt::Application.translate("MainWindow", "About", nil, Qt::Application::UnicodeUTF8)
     @logo.text = ''
     @label_2.text = Qt::Application.translate("MainWindow", "Aminobeats", nil, Qt::Application::UnicodeUTF8)
-    @loadMappings.text = Qt::Application.translate("MainWindow", "Load Mappings", nil, Qt::Application::UnicodeUTF8)
     @plot.text = ''
-    @plotButton.text = Qt::Application.translate("MainWindow", "Plot", nil, Qt::Application::UnicodeUTF8)
+    @divisionCombo.insertItems(0, [Qt::Application.translate("MainWindow", "Greater", nil, Qt::Application::UnicodeUTF8),
+        Qt::Application.translate("MainWindow", "Smaller", nil, Qt::Application::UnicodeUTF8)])
+    @plotButton.text = Qt::Application.translate("MainWindow", "Plot Series", nil, Qt::Application::UnicodeUTF8)
+    @plotDistributionButton.text = Qt::Application.translate("MainWindow", "Plot Distribution", nil, Qt::Application::UnicodeUTF8)
     @playButton.text = Qt::Application.translate("MainWindow", "Play", nil, Qt::Application::UnicodeUTF8)
     @stopButton.text = Qt::Application.translate("MainWindow", "Stop", nil, Qt::Application::UnicodeUTF8)
     @menuHelp.title = Qt::Application.translate("MainWindow", "Help", nil, Qt::Application::UnicodeUTF8)

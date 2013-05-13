@@ -10,8 +10,8 @@ player = AminoPlayer.new
 #will recieive as it's first argument a string containing the
 #mappings
 
-editMappings = Proc.new do |filestring|
-  player.readMappings(filestring)
+editMappings = Proc.new do |filestring,mappings|
+  player.readMappings(filestring,mappings)
 end
 
 
@@ -29,8 +29,13 @@ end
 #user clicks the stop button. It takes no arguments.
 stopPlay = Proc.new do
 #Indicate that music was stopped
-  printf "Stopped"
+  player.stop
+end
+
+parseData = Proc.new do |seq|
+  player.createDataArray(seq)
+  
 end
 
 #Call the function to initialize the gui with your callbacks
-initApp(editMappings,playSequence,stopPlay)
+initApp(editMappings,playSequence,stopPlay,parseData)
