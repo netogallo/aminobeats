@@ -9,7 +9,7 @@ class Aminobeats < Qt::MainWindow
   @@aminos = "./mapping.map"
 
   @@aminosMap = {
-    "Val" => [47,"V",:red],
+    "Val" => [71,"V",:red],
     "Ile" => [72,"I",:red],
     "Leu" => [74,"L",:red],
     "Met" => [76,"M",:red],
