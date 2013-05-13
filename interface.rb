@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Mon May 13 14:20:05 2013
+** Created: Mon May 13 14:26:28 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -26,7 +26,6 @@ class Ui_MainWindow
     attr_reader :horizontalLayout_3
     attr_reader :horizontalSpacer
     attr_reader :divisionCombo
-    attr_reader :separator
     attr_reader :steps
     attr_reader :plotButton
     attr_reader :plotDistributionButton
@@ -115,12 +114,6 @@ class Ui_MainWindow
     @divisionCombo.objectName = "divisionCombo"
 
     @horizontalLayout_3.addWidget(@divisionCombo)
-
-    @separator = Qt::SpinBox.new(@centralwidget)
-    @separator.objectName = "separator"
-    @separator.value = 60
-
-    @horizontalLayout_3.addWidget(@separator)
 
     @steps = Qt::SpinBox.new(@centralwidget)
     @steps.objectName = "steps"

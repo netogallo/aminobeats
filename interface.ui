@@ -129,13 +129,6 @@
                </widget>
               </item>
               <item>
-               <widget class="QSpinBox" name="separator">
-                <property name="value">
-                 <number>60</number>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QSpinBox" name="steps">
                 <property name="minimum">
                  <number>1</number>
