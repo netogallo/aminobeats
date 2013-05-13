@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Mon May 13 23:01:49 2013
+** Created: Di. Mai 14 00:53:27 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -12,12 +12,13 @@ require 'Qt4'
 class Ui_MainWindow
     attr_reader :aboutButton
     attr_reader :centralwidget
+    attr_reader :verticalLayout_4
+    attr_reader :horizontalLayout
     attr_reader :verticalLayout_2
     attr_reader :horizontalLayout_2
     attr_reader :logo
     attr_reader :label_2
     attr_reader :horizontalLayout_5
-    attr_reader :horizontalLayout
     attr_reader :verticalLayout
     attr_reader :plot
     attr_reader :sequenceEdit
@@ -53,7 +54,11 @@ class Ui_MainWindow
     @aboutButton.objectName = "aboutButton"
     @centralwidget = Qt::Widget.new(mainWindow)
     @centralwidget.objectName = "centralwidget"
-    @verticalLayout_2 = Qt::VBoxLayout.new(@centralwidget)
+    @verticalLayout_4 = Qt::VBoxLayout.new(@centralwidget)
+    @verticalLayout_4.objectName = "verticalLayout_4"
+    @horizontalLayout = Qt::HBoxLayout.new()
+    @horizontalLayout.objectName = "horizontalLayout"
+    @verticalLayout_2 = Qt::VBoxLayout.new()
     @verticalLayout_2.objectName = "verticalLayout_2"
     @horizontalLayout_2 = Qt::HBoxLayout.new()
     @horizontalLayout_2.objectName = "horizontalLayout_2"
@@ -66,15 +71,16 @@ class Ui_MainWindow
     @label_2 = Qt::Label.new(@centralwidget)
     @label_2.objectName = "label_2"
     @font = Qt::Font.new
-    @font.family = "Courier 10 Pitch"
+    @font.family = "Code Bold"
     @font.pointSize = 36
     @font.bold = false
     @font.italic = false
-    @font.weight = 50
+    @font.weight = 9
     @label_2.font = @font
     @label_2.styleSheet = "#label_2 {\n" \
 "	color: #fff;\n" \
-"	font: 36pt \"Courier 10 Pitch\";\n" \
+"	\n" \
+"	font: 75 36pt \"Code Bold\";\n" \
 "}"
 
     @horizontalLayout_2.addWidget(@label_2)
@@ -87,8 +93,6 @@ class Ui_MainWindow
 
     @verticalLayout_2.addLayout(@horizontalLayout_5)
 
-    @horizontalLayout = Qt::HBoxLayout.new()
-    @horizontalLayout.objectName = "horizontalLayout"
     @verticalLayout = Qt::VBoxLayout.new()
     @verticalLayout.objectName = "verticalLayout"
     @plot = Qt::Label.new(@centralwidget)
@@ -157,13 +161,17 @@ class Ui_MainWindow
     @verticalLayout.addLayout(@horizontalLayout_3)
 
 
-    @horizontalLayout.addLayout(@verticalLayout)
+    @verticalLayout_2.addLayout(@verticalLayout)
+
+
+    @horizontalLayout.addLayout(@verticalLayout_2)
 
     @notes = Qt::Frame.new(@centralwidget)
     @notes.objectName = "notes"
     @notes.styleSheet = "#notes QLabel{\n" \
 "	color:#fff;\n" \
-"}"
+"}\n" \
+""
     @notes.frameShape = Qt::Frame::StyledPanel
     @notes.frameShadow = Qt::Frame::Raised
     @verticalLayout_3 = Qt::VBoxLayout.new(@notes)
@@ -177,11 +185,11 @@ class Ui_MainWindow
     @horizontalLayout.addWidget(@notes)
 
 
-    @verticalLayout_2.addLayout(@horizontalLayout)
+    @verticalLayout_4.addLayout(@horizontalLayout)
 
     @verticalSpacer = Qt::SpacerItem.new(20, 115, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
 
-    @verticalLayout_2.addItem(@verticalSpacer)
+    @verticalLayout_4.addItem(@verticalSpacer)
 
     mainWindow.centralWidget = @centralwidget
     @statusbar = Qt::StatusBar.new(mainWindow)
@@ -206,8 +214,8 @@ class Ui_MainWindow
     @sequenceEdit.html = Qt::Application.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n" \
 "p, li { white-space: pre-wrap; }\n" \
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;\">\n" \
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nil, Qt::Application::UnicodeUTF8)
+"</style></head><body style=\" font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;\">\n" \
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:10pt;\"><br /></p></body></html>", nil, Qt::Application::UnicodeUTF8)
     @aminosList.text = ''
     @divisionCombo.insertItems(0, [Qt::Application.translate("MainWindow", "Greater", nil, Qt::Application::UnicodeUTF8),
         Qt::Application.translate("MainWindow", "Smaller", nil, Qt::Application::UnicodeUTF8)])

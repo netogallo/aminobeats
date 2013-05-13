@@ -24,173 +24,178 @@
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="logo">
-        <property name="maximumSize">
-         <size>
-          <width>250</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="font">
-         <font>
-          <family>Courier 10 Pitch</family>
-          <pointsize>36</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">#label_2 {
-	color: #fff;
-	font: 36pt &quot;Courier 10 Pitch&quot;;
-}</string>
-        </property>
-        <property name="text">
-         <string>Amino Sonic</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_5"/>
-    </item>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QLabel" name="plot">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="sequenceEdit">
-          <property name="styleSheet">
-           <string notr="true">#sequenceEdit {
-	color: #fff;
-}</string>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="aminosList">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="textFormat">
-           <enum>Qt::RichText</enum>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
+           <widget class="QLabel" name="logo">
+            <property name="maximumSize">
              <size>
-              <width>40</width>
-              <height>20</height>
+              <width>250</width>
+              <height>100</height>
              </size>
             </property>
-           </spacer>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="divisionCombo">
+           <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <family>Code Bold</family>
+              <pointsize>36</pointsize>
+              <weight>9</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#label_2 {
+	color: #fff;
+	
+	font: 75 36pt &quot;Code Bold&quot;;
+}</string>
+            </property>
+            <property name="text">
+             <string>Amino Sonic</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5"/>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="plot">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>200</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="sequenceEdit">
+            <property name="styleSheet">
+             <string notr="true">#sequenceEdit {
+	color: #fff;
+}</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Lucida Grande'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Sans Serif'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="aminosList">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::RichText</enum>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <property name="text">
-              <string>Greater</string>
-             </property>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
-             <property name="text">
-              <string>Smaller</string>
-             </property>
+             <widget class="QComboBox" name="divisionCombo">
+              <item>
+               <property name="text">
+                <string>Greater</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Smaller</string>
+               </property>
+              </item>
+             </widget>
             </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="steps">
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>100</number>
-            </property>
-            <property name="value">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="plotButton">
-            <property name="text">
-             <string>Plot Series</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="plotDistributionButton">
-            <property name="text">
-             <string>Plot Distribution</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="playButton">
-            <property name="text">
-             <string>Play</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="stopButton">
-            <property name="text">
-             <string>Stop</string>
-            </property>
-           </widget>
+            <item>
+             <widget class="QSpinBox" name="steps">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+              <property name="value">
+               <number>10</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="plotButton">
+              <property name="text">
+               <string>Plot Series</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="plotDistributionButton">
+              <property name="text">
+               <string>Plot Distribution</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="playButton">
+              <property name="text">
+               <string>Play</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="stopButton">
+              <property name="text">
+               <string>Stop</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -201,7 +206,8 @@ p, li { white-space: pre-wrap; }
         <property name="styleSheet">
          <string notr="true">#notes QLabel{
 	color:#fff;
-}</string>
+}
+</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -240,8 +246,6 @@ p, li { white-space: pre-wrap; }
    </property>
   </action>
  </widget>
- <resources>
-  <include location="res.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
