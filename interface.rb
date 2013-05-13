@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'interface.ui'
 **
-** Created: Mon May 13 14:26:28 2013
+** Created: Mon May 13 14:28:40 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -203,7 +203,7 @@ class Ui_MainWindow
     mainWindow.windowTitle = Qt::Application.translate("MainWindow", "MainWindow", nil, Qt::Application::UnicodeUTF8)
     @aboutButton.text = Qt::Application.translate("MainWindow", "About", nil, Qt::Application::UnicodeUTF8)
     @logo.text = ''
-    @label_2.text = Qt::Application.translate("MainWindow", "Aminobeats", nil, Qt::Application::UnicodeUTF8)
+    @label_2.text = Qt::Application.translate("MainWindow", "Amino Sonic", nil, Qt::Application::UnicodeUTF8)
     @plot.text = ''
     @aminosList.text = ''
     @divisionCombo.insertItems(0, [Qt::Application.translate("MainWindow", "Greater", nil, Qt::Application::UnicodeUTF8),
